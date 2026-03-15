@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Páscoa 2026 | Dolce Gulla</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        :root {
+            --primaria: #4E342E;
+            --secundaria: #D4AF37;
+            --fundo: #FFFBF2;
+            --texto: #2D1B13;
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--fundo); color: var(--texto); line-height: 1.5; }
+
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 251, 242, 0.98); padding: 12px 20px; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: var(--shadow); backdrop-filter: blur(5px); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--primaria); text-decoration: none; letter-spacing: 1px; }
+
+        .hero { height: 45vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('https://i.imgur.com/pBSNL12.jpeg') center center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 60px; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 5px; }
+
+        .container { padding: 30px 15px; }
+        .section-header { text-align: center; margin-bottom: 25px; margin-top: 20px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primaria); border-bottom: 2px solid var(--secundaria); display: inline-block; padding-bottom: 5px; }
+
+        .product-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 40px; }
+        .product-card { background: white; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); display: flex; height: 120px; border: 1px solid rgba(0,0,0,0.03); }
+        .product-image { width: 35%; height: 100%; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; }
+        .product-info { width: 65%; padding: 12px; display: flex; flex-direction: column; justify-content: center; }
+        .product-info h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--primaria); margin-bottom: 4px; line-height: 1.2; }
+        .price-from { font-size: 0.8rem; opacity: 0.6; }
+        .product-price { color: var(--secundaria); font-weight: 700; font-size: 1.1rem; }
+
+        .modal { position: fixed; bottom: -100%; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; transition: bottom 0.4s cubic-bezier(0, 1, 0.5, 1); display: flex; align-items: flex-end; }
+        .modal.active { bottom: 0; }
+        .modal-content { background: var(--fundo); width: 100%; max-height: 90vh; border-radius: 25px 25px 0 0; overflow-y: auto; position: relative; padding-bottom: 30px; }
+        .close-bar { width: 40px; height: 5px; background: #ddd; border-radius: 10px; margin: 12px auto; }
+        .modal-image { width: 100%; height: 220px; }
+        .modal-image img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-details { padding: 20px; text-align: center; }
+        
+        .weight-selector { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+        .weight-option { padding: 8px 20px; border: 2px solid #ddd; border-radius: 50px; font-weight: 600; font-size: 0.9rem; color: var(--primaria); cursor: pointer; transition: 0.3s; }
+        .weight-option.selected { border-color: var(--secundaria); background: var(--secundaria); color: white; }
+
+        .btn-encomendar { background: #25D366; color: white; padding: 16px; border-radius: 15px; text-decoration: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; width: 100%; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 999; }
+        footer { padding: 40px 20px 100px; background: var(--primaria); color: white; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <nav><a href="#" class="logo">DOLCE GULLA</a></nav>
+
+    <header class="hero">
+        <div class="hero-content animate__animated animate__fadeIn">
+            <h1>Páscoa 2026</h1>
+            <p>Momentos gourmet feitos à mão.</p>
+        </div>
+    </header>
+
+<section class="container" id="ovos">
+        <div class="section-header"><h2>Ovos Casca Recheada/Trufados</h2></div>
+
+        <div class="product-grid">
+            <div class="product-card" onclick="openModal('Framboesa & Champagne', 'Casca de chocolate belga branco com ganache de framboesa e delicado toque de creme de champagne.', 'https://i.imgur.com/0Y4x2im.jpeg', 95, 128)">
+                <div class="product-image"><img src="https://i.imgur.com/0Y4x2im.jpeg"></div>
+                <div class="product-info">
+                    <h3>Framboesa & Champagne</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 95,00</p>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openModal('Coco com Amêndoas', 'Casca de chocolate belga branco com trufado cremoso de coco e amêndoas.', 'https://i.imgur.com/hWz72JN.jpeg', 86, 116)">
+                <div class="product-image"><img src="https://i.imgur.com/hWz72JN.jpeg"></div>
+                <div class="product-info">
+                    <h3>Coco com Amêndoas</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 86,00</p>
+                </div>
+            </div>
+
+        <div class="product-grid">
+            <div class="product-card" onclick="openModal('Limão Siciliano & Merengue', 'Casca de chocolate belga branco com brigadeiro gourmet de limão siciliano, farofinha de bolacha e merengue.', 'https://i.imgur.com/q0f6ZZn.jpeg', 92, 122)">
+                <div class="product-image"><img src="https://i.imgur.com/q0f6ZZn.jpeg"></div>
+                <div class="product-info">
+                    <h3>Limão Siciliano & Merengue</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 92,00</p>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openModal('Biscoff Cream', 'Casca de chocolate belga branco com brigadeiro gourmet branco, farofa crocante de Biscoff e ganache cremosa de Biscoff.', 'https://i.imgur.com/GXYlFYQ.jpeg', 92, 122)">
+                <div class="product-image"><img src="https://i.imgur.com/GXYlFYQ.jpeg"></div>
+                <div class="product-info">
+                    <h3>Biscoff Cream</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 92,00</p>
+                </div>
+            </div>
+
+        <div class="product-grid">
+            <div class="product-card" onclick="openModal('Cereja Trufado', 'Casca belga de chocolate blend (amargo + ao leite) com trufado cremoso de cereja.', 'https://i.imgur.com/SkSThSO.jpeg', 92, 122)">
+                <div class="product-image"><img src="https://i.imgur.com/SkSThSO.jpeg"></div>
+                <div class="product-info">
+                    <h3>Cereja Trufado</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 92,00</p>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openModal('Caramelo Flor de Sal & Crocante', 'Casca belga de chocolate blend (amargo + ao leite) crocante e caramelo com toque de flor de sal.', 'https://i.imgur.com/FALuLE5.jpeg', 89, 119)">
+                <div class="product-image"><img src="https://i.imgur.com/FALuLE5.jpeg"></div>
+                <div class="product-info">
+                    <h3>Caramelo Flor de Sal & Crocante</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 89,00</p>
+                </div>
+            </div>
+
+        <div class="product-grid">
+            <div class="product-card" onclick="openModal('Nutella com Avelã', 'Casca belga de chocolate blend (amargo + ao leite) com creme de nutella e pedaços de avelã.', 'https://i.imgur.com/jSX2cex.jpeg', 89, 119)">
+                <div class="product-image"><img src="https://i.imgur.com/jSX2cex.jpeg"></div>
+                <div class="product-info">
+                    <h3>Nutella com Avelã</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 89,00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="lembrancas">
+        <div class="section-header">
+            <h2>Lembranças</h2>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card" onclick="openModal('Mini Ovo Recheado', 'Recheado com brigadeiro gourmet (sabores sortidos), em uma embalagem exclusiva *ideal para corporativo.', 'https://i.imgur.com/gbQEsoc.jpeg', 00, 00)">
+                <div class="product-image"><img src="https://i.imgur.com/gbQEsoc.jpeg"></div>
+                <div class="product-info">
+                    <h3>Mini Ovo Recheado</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 00,00</p>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openModal('Caixa Brownie Premium', 'Recheada com 16 brownies, 5x5 cm e uma calda belga cremosa, pote com 100 ml. Tudo isso em uma caixa exclusiva cartonada.', 'https://i.imgur.com/3xUKFyB.jpeg', 00, 00)">
+                <div class="product-image"><img src="https://i.imgur.com/3xUKFyB.jpeg"></div>
+                <div class="product-info">
+                    <h3>Caixa Brownie Premium</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 00,00</p>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openModal('Caixas Premium Brigadeiro Gourmet', 'Com opção de 6 ou 15 unidades de brigadeiros gourmet sortidos (ver disponibilidade de sabores).', 'https://i.imgur.com/13DDMLb.jpeg', 00, 01, true)">
+                <div class="product-image"><img src="https://i.imgur.com/13DDMLb.jpeg"></div>
+                <div class="product-info">
+                    <h3>Caixas Premium Brigadeiro Gourmet</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 00,00</p>
+                </div>
+            </div>
+
+            <div class="product-card" onclick="openModal('Ovinhos Belga', 'Com 10 mini ovinhos belga com chocolate belga branco e blend (amargo + ao leite).', 'https://i.imgur.com/iUugIBw.jpeg', 00, 00)">
+                <div class="product-image"><img src="https://i.imgur.com/iUugIBw.jpeg"></div>
+                <div class="product-info">
+                    <h3>Ovinhos Belga</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 00,00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="sobremesas">
+        <div class="section-header">
+            <h2>Sobremesas</h2>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card" onclick="openModal('Bolo de Cenoura', 'Um delicioso bolo de cenoura caseiro com cobertura de brigadeiro belga.', 'https://i.imgur.com/ekUTSst.jpeg', 00, 00)">
+                <div class="product-image"><img src="https://i.imgur.com/ekUTSst.jpeg"></div>
+                <div class="product-info">
+                    <h3>Bolo de Cenoura</h3>
+                    <p class="price-from">A partir de</p>
+                    <p class="product-price">R$ 00,00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Dolce Gulla Brigaderia</strong></p>
+        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">São Carlos/SP</p>
+    </footer>
+
+    <div class="modal" id="productModal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="close-bar" onclick="closeModal()"></div>
+            <div class="modal-image"><img id="modalImg" src=""></div>
+            <div class="modal-details">
+                <h2 id="modalTitle" style="color: var(--primaria);"></h2>
+                <p id="modalDesc" style="margin-top: 10px; font-size: 0.9rem; color: #666;"></p>
+                
+                <div id="selectorContainer">
+                    <p id="selectorLabel" style="margin-top: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; color: var(--secundaria);">Escolha o tamanho:</p>
+                    <div class="weight-selector">
+                        <div id="opt1" class="weight-option selected" onclick="selectOption(1)">250g</div>
+                        <div id="opt2" class="weight-option" onclick="selectOption(2)">350g</div>
+                    </div>
+                </div>
+
+                <div id="modalPrice" style="font-size: 2rem; font-weight: 700; color: var(--primaria); margin: 15px 0;"></div>
+                <a href="#" id="whatsappLink" target="_blank" class="btn-encomendar">Pedir no WhatsApp <i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5516996363737" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        let currentProduct = { nome: '', p1: 0, p2: 0, isUnit: false };
+
+        function openModal(nome, desc, img, preco1, preco2, isUnit = false) {
+            currentProduct = { nome, p1: preco1, p2: preco2, isUnit: isUnit };
+            document.getElementById('modalTitle').innerText = nome;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalImg').src = img;
+
+            // Se os preços forem iguais, esconde o seletor
+            if(preco1 === preco2) {
+                document.getElementById('selectorContainer').style.display = 'none';
+            } else {
+                document.getElementById('selectorContainer').style.display = 'block';
+                // Ajusta o texto se for unidade em vez de gramas
+                document.getElementById('opt1').innerText = isUnit ? "6 un." : "250g";
+                document.getElementById('opt2').innerText = isUnit ? "15 un." : "350g";
+                document.getElementById('selectorLabel').innerText = isUnit ? "Escolha a quantidade:" : "Escolha o peso:";
+            }
+
+            selectOption(1);
+            document.getElementById('productModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function selectOption(opt) {
+            const preco = opt === 1 ? currentProduct.p1 : currentProduct.p2;
+            const sufixo = currentProduct.isUnit ? (opt === 1 ? "6 unidades" : "15 unidades") : (opt === 1 ? "250g" : "350g");
+            
+            document.getElementById('opt1').classList.toggle('selected', opt === 1);
+            document.getElementById('opt2').classList.toggle('selected', opt === 2);
+            document.getElementById('modalPrice').innerText = `R$ ${preco},00`;
+
+            const msg = encodeURIComponent(`Olá! Quero encomendar: ${currentProduct.nome} (${sufixo}).`);
+            document.getElementById('whatsappLink').href = `https://wa.me/5516996363737?text=${msg}`;
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
