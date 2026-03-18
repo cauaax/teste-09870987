@@ -123,6 +123,45 @@
     opacity: 0.5;
     margin-top: 30px;
 }
+
+.cart-float {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #25D366;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    z-index: 9999;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.cart-info {
+    position: relative;
+}
+
+#cartCount {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--primaria);
+    color: white;
+    font-size: 0.7rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #25D366;
+}
     </style>
 </head>
 <body>
@@ -215,7 +254,7 @@
 
     <div class="product-grid">
         
-        <div class="product-card" onclick="openModal('Mini Ovo Recheado', 'Recheado com brigadeiro gourmet (sabores sortidos), em uma embalagem exclusiva *ideal para corporativo.', 'https://i.imgur.com/gbQEsoc.jpeg', 18, 52, 'mini')">
+        <div class="product-card" onclick="openModal('Mini Ovo Recheado', 'Recheado com brigadeiro gourmet (sabores sortidos), em uma embalagem exclusiva *ideal para corporativo.', 'https://i.imgur.com/gbQEsoc.jpeg', 15, 35, 'mini')">
             <div class="product-image"><img src="https://i.imgur.com/gbQEsoc.jpeg"></div>
             <div class="product-info">
                 <h3>Mini Ovo Recheado</h3>
@@ -307,7 +346,9 @@
                 </div>
 
                 <div id="modalPrice" style="font-size: 2rem; font-weight: 700; color: var(--primaria); margin: 15px 0;"></div>
-                <a href="#" id="whatsappLink" target="_blank" class="btn-encomendar">Pedir no WhatsApp <i class="fab fa-whatsapp"></i></a>
+                <button onclick="addToCart()" class="btn-encomendar" style="border:none; cursor:pointer; width:100%;">
+    Adicionar ao Carrinho <i class="fas fa-shopping-basket"></i>
+</button>
             </div>
         </div>
     </div>
@@ -315,70 +356,107 @@
     <a href="https://wa.me/5516996363737" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-    // Agora o objeto guarda o 'type' para definir o texto das opções
-    let currentProduct = { nome: '', p1: 0, p2: 0, type: 'weight' };
+let cart = [];
+let currentProduct = { nome: '', p1: 0, p2: 0, type: 'weight' };
+let selectedPrice = 0;
+let selectedOptionText = "";
 
-    function openModal(nome, desc, img, preco1, preco2, type = 'weight') {
-        currentProduct = { nome, p1: preco1, p2: preco2, type: type };
-        document.getElementById('modalTitle').innerText = nome;
-        document.getElementById('modalDesc').innerText = desc;
-        document.getElementById('modalImg').src = img;
+function openModal(nome, desc, img, preco1, preco2, type = 'weight') {
+    currentProduct = { nome, p1: preco1, p2: preco2, type: type };
+    document.getElementById('modalTitle').innerText = nome;
+    document.getElementById('modalDesc').innerText = desc;
+    document.getElementById('modalImg').src = img;
 
+    const container = document.getElementById('selectorContainer');
+    if (preco1 === preco2) {
+        container.style.display = 'none';
+        selectedPrice = preco1;
+        selectedOptionText = "Unidade única";
+    } else {
+        container.style.display = 'block';
         const opt1 = document.getElementById('opt1');
         const opt2 = document.getElementById('opt2');
         const label = document.getElementById('selectorLabel');
 
-        // Lógica de labels baseada no tipo
-        if (preco1 === preco2) {
-            document.getElementById('selectorContainer').style.display = 'none';
+        if (type === 'mini') {
+            opt1.innerText = "50g"; opt2.innerText = "150g";
+            label.innerText = "Escolha o tamanho:";
+        } else if (type === 'unit' || type === true) {
+            opt1.innerText = "6 un."; opt2.innerText = "15 un.";
+            label.innerText = "Escolha a quantidade:";
         } else {
-            document.getElementById('selectorContainer').style.display = 'block';
-            
-            if (type === 'mini') {
-                opt1.innerText = "50g";
-                opt2.innerText = "150g";
-                label.innerText = "Escolha o tamanho:";
-            } else if (type === true || type === 'unit') { // Mantém compatibilidade com o que você já tinha
-                opt1.innerText = "6 un.";
-                opt2.innerText = "15 un.";
-                label.innerText = "Escolha a quantidade:";
-            } else {
-                opt1.innerText = "250g";
-                opt2.innerText = "350g";
-                label.innerText = "Escolha o peso:";
-            }
+            opt1.innerText = "250g"; opt2.innerText = "350g";
+            label.innerText = "Escolha o peso:";
         }
-
         selectOption(1);
-        document.getElementById('productModal').classList.add('active');
-        document.body.style.overflow = 'hidden';
     }
 
-    function selectOption(opt) {
-        const preco = opt === 1 ? currentProduct.p1 : currentProduct.p2;
-        let sufixo = "";
+    document.getElementById('productModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-        // Define o texto que vai para o WhatsApp
-        if (currentProduct.type === 'mini') {
-            sufixo = opt === 1 ? "50g" : "150g";
-        } else if (currentProduct.type === true || currentProduct.type === 'unit') {
-            sufixo = opt === 1 ? "6 unidades" : "15 unidades";
-        } else {
-            sufixo = opt === 1 ? "250g" : "350g";
-        }
-        
-        document.getElementById('opt1').classList.toggle('selected', opt === 1);
-        document.getElementById('opt2').classList.toggle('selected', opt === 2);
-        document.getElementById('modalPrice').innerText = `R$ ${preco},00`;
+function selectOption(opt) {
+    selectedPrice = opt === 1 ? currentProduct.p1 : currentProduct.p2;
+    const opt1 = document.getElementById('opt1');
+    const opt2 = document.getElementById('opt2');
+    
+    opt1.classList.toggle('selected', opt === 1);
+    opt2.classList.toggle('selected', opt === 2);
+    
+    selectedOptionText = opt1.classList.contains('selected') ? opt1.innerText : opt2.innerText;
+    document.getElementById('modalPrice').innerText = `R$ ${selectedPrice},00`;
+}
 
-        const msg = encodeURIComponent(`Olá! Quero encomendar: ${currentProduct.nome} (${sufixo}).`);
-        document.getElementById('whatsappLink').href = `https://wa.me/5516996363737?text=${msg}`;
-    }
+function addToCart() {
+    const item = {
+        nome: currentProduct.nome,
+        opcao: selectedOptionText,
+        preco: selectedPrice
+    };
+    cart.push(item);
+    updateCartUI();
+    closeModal();
+    
+    // Feedback visual rápido
+    const btn = document.querySelector('.cart-float');
+    btn.style.transform = 'scale(1.2)';
+    setTimeout(() => btn.style.transform = 'scale(1)', 200);
+}
 
-    function closeModal() {
-        document.getElementById('productModal').classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
+function updateCartUI() {
+    const count = cart.length;
+    document.getElementById('cartCount').innerText = count;
+    document.getElementById('cartFloat').style.display = count > 0 ? 'flex' : 'none';
+}
+
+function sendOrder() {
+    if (cart.length === 0) return;
+
+    let msg = "Olá! Gostaria de fazer o seguinte pedido:\n\n";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        msg += `${index + 1}. ${item.nome} (${item.opcao}) - R$ ${item.preco},00\n`;
+        total += item.preco;
+    });
+
+    msg += `\n*Total: R$ ${total},00*`;
+    
+    const encodedMsg = encodeURIComponent(msg);
+    window.open(`https://wa.me/5516996363737?text=${encodedMsg}`, '_blank');
+}
+
+function closeModal() {
+    document.getElementById('productModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
 </script>
+<div id="cartFloat" class="cart-float" onclick="sendOrder()" style="display: none;">
+    <div class="cart-info">
+        <span id="cartCount">0</span>
+        <i class="fas fa-shopping-cart"></i>
+    </div>
+    <span>Finalizar Pedido</span>
+</div>
 </body>
 </html>
