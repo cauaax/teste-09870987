@@ -28,11 +28,11 @@
         .hero { height: 45vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('https://i.imgur.com/pBSNL12.jpeg') center center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 60px; }
         .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 5px; }
 
-        .container { padding: 30px 15px; }
-        .section-header { text-align: center; margin-bottom: 25px; margin-top: 20px; }
+        .container { padding: 15px 15px; }
+        .section-header { text-align: center; margin-bottom: 15px; margin-top: 20px; }
         .section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primaria); border-bottom: 2px solid var(--secundaria); display: inline-block; padding-bottom: 5px; }
 
-        .product-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 40px; }
+        .product-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 2px; }
         .product-card { background: white; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); display: flex; height: 120px; border: 1px solid rgba(0,0,0,0.03); }
         .product-image { width: 35%; height: 100%; }
         .product-image img { width: 100%; height: 100%; object-fit: cover; }
@@ -55,7 +55,74 @@
 
         .btn-encomendar { background: #25D366; color: white; padding: 16px; border-radius: 15px; text-decoration: none; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; width: 100%; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 999; }
-        footer { padding: 40px 20px 100px; background: var(--primaria); color: white; text-align: center; }
+        footer {
+    padding: 60px 20px 110px; /* Aumentei o espaço por causa do botão flutuante */
+    background: var(--primaria);
+    color: white;
+    text-align: center;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secundaria);
+    letter-spacing: 2px;
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    color: var(--secundaria);
+    transform: translateY(-3px);
+}
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    max-width: 200px;
+    margin: 0 auto 20px;
+}
+
+.footer-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.footer-location:hover {
+    opacity: 1;
+    color: var(--secundaria);
+}
+
+.copyright {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    margin-top: 30px;
+}
     </style>
 </head>
 <body>
@@ -142,48 +209,49 @@
     </section>
 
     <section class="container" id="lembrancas">
-        <div class="section-header">
-            <h2>Lembranças</h2>
-        </div>
+    <div class="section-header">
+        <h2>Lembranças</h2>
+    </div>
 
-        <div class="product-grid">
-            <div class="product-card" onclick="openModal('Mini Ovo Recheado', 'Recheado com brigadeiro gourmet (sabores sortidos), em uma embalagem exclusiva *ideal para corporativo.', 'https://i.imgur.com/gbQEsoc.jpeg', 00, 00)">
-                <div class="product-image"><img src="https://i.imgur.com/gbQEsoc.jpeg"></div>
-                <div class="product-info">
-                    <h3>Mini Ovo Recheado</h3>
-                    <p class="price-from">A partir de</p>
-                    <p class="product-price">R$ 00,00</p>
-                </div>
-            </div>
-
-            <div class="product-card" onclick="openModal('Caixa Brownie Premium', 'Recheada com 16 brownies, 5x5 cm e uma calda belga cremosa, pote com 100 ml. Tudo isso em uma caixa exclusiva cartonada.', 'https://i.imgur.com/3xUKFyB.jpeg', 00, 00)">
-                <div class="product-image"><img src="https://i.imgur.com/3xUKFyB.jpeg"></div>
-                <div class="product-info">
-                    <h3>Caixa Brownie Premium</h3>
-                    <p class="price-from">A partir de</p>
-                    <p class="product-price">R$ 00,00</p>
-                </div>
-            </div>
-
-            <div class="product-card" onclick="openModal('Caixas Premium Brigadeiro Gourmet', 'Com opção de 6 ou 15 unidades de brigadeiros gourmet sortidos (ver disponibilidade de sabores).', 'https://i.imgur.com/13DDMLb.jpeg', 00, 01, true)">
-                <div class="product-image"><img src="https://i.imgur.com/13DDMLb.jpeg"></div>
-                <div class="product-info">
-                    <h3>Caixas Premium Brigadeiro Gourmet</h3>
-                    <p class="price-from">A partir de</p>
-                    <p class="product-price">R$ 00,00</p>
-                </div>
-            </div>
-
-            <div class="product-card" onclick="openModal('Ovinhos Belga', 'Com 10 mini ovinhos belga com chocolate belga branco e blend (amargo + ao leite).', 'https://i.imgur.com/iUugIBw.jpeg', 00, 00)">
-                <div class="product-image"><img src="https://i.imgur.com/iUugIBw.jpeg"></div>
-                <div class="product-info">
-                    <h3>Ovinhos Belga</h3>
-                    <p class="price-from">A partir de</p>
-                    <p class="product-price">R$ 00,00</p>
-                </div>
+    <div class="product-grid">
+        
+        <div class="product-card" onclick="openModal('Mini Ovo Recheado', 'Recheado com brigadeiro gourmet (sabores sortidos), em uma embalagem exclusiva *ideal para corporativo.', 'https://i.imgur.com/gbQEsoc.jpeg', 15, 35, 'mini')">
+            <div class="product-image"><img src="https://i.imgur.com/gbQEsoc.jpeg"></div>
+            <div class="product-info">
+                <h3>Mini Ovo Recheado</h3>
+                <p class="price-from">A partir de</p>
+                <p class="product-price">R$ 15,00</p>
             </div>
         </div>
-    </section>
+
+        <div class="product-card" onclick="openModal('Caixa Brownie Premium', 'Recheada com 16 brownies, 5x5 cm e uma calda belga cremosa, pote com 100 ml. Tudo isso em uma caixa exclusiva cartonada.', 'https://i.imgur.com/3xUKFyB.jpeg', 185, 185)">
+            <div class="product-image"><img src="https://i.imgur.com/3xUKFyB.jpeg"></div>
+            <div class="product-info">
+                <h3>Caixa Brownie Premium</h3>
+                <p class="price-from">A partir de</p>
+                <p class="product-price">R$ 185,00</p>
+            </div>
+        </div>
+
+        <div class="product-card" onclick="openModal('Caixas Premium Brigadeiro Gourmet', 'Com opção de 6 ou 15 unidades de brigadeiros gourmet sortidos (ver disponibilidade de sabores).', 'https://i.imgur.com/13DDMLb.jpeg', 67, 122, 'unit')">
+            <div class="product-image"><img src="https://i.imgur.com/13DDMLb.jpeg"></div>
+            <div class="product-info">
+                <h3>Caixas Premium Brigadeiro Gourmet</h3>
+                <p class="price-from">A partir de</p>
+                <p class="product-price">R$ 67,00</p>
+            </div>
+        </div>
+
+        <div class="product-card" onclick="openModal('Ovinhos Belga', 'Com 10 mini ovinhos belga com chocolate belga branco e blend (amargo + ao leite). *IMAGEM ILUSTRATIVA', 'https://i.imgur.com/GyS1iHL.png', 76, 76)">
+            <div class="product-image"><img src="https://i.imgur.com/GyS1iHL.png"></div>
+            <div class="product-info">
+                <h3>Ovinhos Belga</h3>
+                <p class="price-from">A partir de</p>
+                <p class="product-price">R$ 76,00</p>
+            </div>
+        </div>
+
+    </div> </section>
 
     <section class="container" id="sobremesas">
         <div class="section-header">
@@ -191,21 +259,36 @@
         </div>
 
         <div class="product-grid">
-            <div class="product-card" onclick="openModal('Bolo de Cenoura', 'Um delicioso bolo de cenoura caseiro com cobertura de brigadeiro belga.', 'https://i.imgur.com/ekUTSst.jpeg', 00, 00)">
+            <div class="product-card" onclick="openModal('Bolo de Cenoura', 'Um delicioso bolo de cenoura caseiro com cobertura de brigadeiro belga.', 'https://i.imgur.com/ekUTSst.jpeg', 65, 65)">
                 <div class="product-image"><img src="https://i.imgur.com/ekUTSst.jpeg"></div>
                 <div class="product-info">
                     <h3>Bolo de Cenoura</h3>
                     <p class="price-from">A partir de</p>
-                    <p class="product-price">R$ 00,00</p>
+                    <p class="product-price">R$ 65,00</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p><strong>Dolce Gulla Brigaderia</strong></p>
-        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">São Carlos/SP</p>
-    </footer>
+    <footer class="custom-footer">
+    <div class="footer-content">
+        <div class="footer-logo">DOLCE GULLA BRIGADERIA</div>
+        <p class="footer-tagline">Adoçando seus momentos especiais</p>
+        
+        <div class="footer-social">
+            <a href="https://www.instagram.com/dolce_gulla" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5516996363737" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <hr class="footer-divider">
+
+        <a href="https://maps.google.com/?q=Dolce+Gulla+Sao+Carlos" target="_blank" class="footer-location">
+            <i class="fas fa-map-marker-alt"></i> São Carlos/SP
+        </a>
+        
+        <p class="copyright">© 2026 Dolce Gulla Brigaderia. Todos os direitos reservados.</p>
+    </div>
+</footer>
 
     <div class="modal" id="productModal" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -231,47 +314,71 @@
 
     <a href="https://wa.me/5516996363737" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
-    <script>
-        let currentProduct = { nome: '', p1: 0, p2: 0, isUnit: false };
+<script>
+    // Agora o objeto guarda o 'type' para definir o texto das opções
+    let currentProduct = { nome: '', p1: 0, p2: 0, type: 'weight' };
 
-        function openModal(nome, desc, img, preco1, preco2, isUnit = false) {
-            currentProduct = { nome, p1: preco1, p2: preco2, isUnit: isUnit };
-            document.getElementById('modalTitle').innerText = nome;
-            document.getElementById('modalDesc').innerText = desc;
-            document.getElementById('modalImg').src = img;
+    function openModal(nome, desc, img, preco1, preco2, type = 'weight') {
+        currentProduct = { nome, p1: preco1, p2: preco2, type: type };
+        document.getElementById('modalTitle').innerText = nome;
+        document.getElementById('modalDesc').innerText = desc;
+        document.getElementById('modalImg').src = img;
 
-            // Se os preços forem iguais, esconde o seletor
-            if(preco1 === preco2) {
-                document.getElementById('selectorContainer').style.display = 'none';
-            } else {
-                document.getElementById('selectorContainer').style.display = 'block';
-                // Ajusta o texto se for unidade em vez de gramas
-                document.getElementById('opt1').innerText = isUnit ? "6 un." : "250g";
-                document.getElementById('opt2').innerText = isUnit ? "15 un." : "350g";
-                document.getElementById('selectorLabel').innerText = isUnit ? "Escolha a quantidade:" : "Escolha o peso:";
-            }
+        const opt1 = document.getElementById('opt1');
+        const opt2 = document.getElementById('opt2');
+        const label = document.getElementById('selectorLabel');
 
-            selectOption(1);
-            document.getElementById('productModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function selectOption(opt) {
-            const preco = opt === 1 ? currentProduct.p1 : currentProduct.p2;
-            const sufixo = currentProduct.isUnit ? (opt === 1 ? "6 unidades" : "15 unidades") : (opt === 1 ? "250g" : "350g");
+        // Lógica de labels baseada no tipo
+        if (preco1 === preco2) {
+            document.getElementById('selectorContainer').style.display = 'none';
+        } else {
+            document.getElementById('selectorContainer').style.display = 'block';
             
-            document.getElementById('opt1').classList.toggle('selected', opt === 1);
-            document.getElementById('opt2').classList.toggle('selected', opt === 2);
-            document.getElementById('modalPrice').innerText = `R$ ${preco},00`;
-
-            const msg = encodeURIComponent(`Olá! Quero encomendar: ${currentProduct.nome} (${sufixo}).`);
-            document.getElementById('whatsappLink').href = `https://wa.me/5516996363737?text=${msg}`;
+            if (type === 'mini') {
+                opt1.innerText = "50g";
+                opt2.innerText = "150g";
+                label.innerText = "Escolha o tamanho:";
+            } else if (type === true || type === 'unit') { // Mantém compatibilidade com o que você já tinha
+                opt1.innerText = "6 un.";
+                opt2.innerText = "15 un.";
+                label.innerText = "Escolha a quantidade:";
+            } else {
+                opt1.innerText = "250g";
+                opt2.innerText = "350g";
+                label.innerText = "Escolha o peso:";
+            }
         }
 
-        function closeModal() {
-            document.getElementById('productModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
+        selectOption(1);
+        document.getElementById('productModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function selectOption(opt) {
+        const preco = opt === 1 ? currentProduct.p1 : currentProduct.p2;
+        let sufixo = "";
+
+        // Define o texto que vai para o WhatsApp
+        if (currentProduct.type === 'mini') {
+            sufixo = opt === 1 ? "50g" : "150g";
+        } else if (currentProduct.type === true || currentProduct.type === 'unit') {
+            sufixo = opt === 1 ? "6 unidades" : "15 unidades";
+        } else {
+            sufixo = opt === 1 ? "250g" : "350g";
         }
-    </script>
+        
+        document.getElementById('opt1').classList.toggle('selected', opt === 1);
+        document.getElementById('opt2').classList.toggle('selected', opt === 2);
+        document.getElementById('modalPrice').innerText = `R$ ${preco},00`;
+
+        const msg = encodeURIComponent(`Olá! Quero encomendar: ${currentProduct.nome} (${sufixo}).`);
+        document.getElementById('whatsappLink').href = `https://wa.me/5516996363737?text=${msg}`;
+    }
+
+    function closeModal() {
+        document.getElementById('productModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+</script>
 </body>
 </html>
